@@ -1,27 +1,19 @@
 package advantageshopping;
 
-import io.appium.java_client.MobileElement;
-import io.appium.java_client.pagefactory.AndroidFindBy;
+import io.appium.java_client.android.AndroidElement;
+import org.openqa.selenium.By;
 
 public class LoginPage extends BasePage {
 
-    /**
-     * Login button
-     */
-    @AndroidFindBy(id="login_button")
-    private MobileElement loginButton;
-
-    public void tapLoginButton() {
-        this.loginButton.click();
-    }
-
     public void setUsername(String username) {
-        this.usernameField.clear();
-        this.usernameField.sendKeys(username);
+        AndroidElement userElement = this.driver.findElement(By.xpath("(//android.widget.EditText)[1]"));
+        userElement.click();
+        userElement.sendKeys(username);
     }
 
     public void setPassword(String password) {
-        this.passwordField.clear();
-        this.passwordField.sendKeys(password);
+        AndroidElement passElement = this.driver.findElement(By.xpath("(//android.widget.EditText)[2]"));
+        passElement.click();
+        passElement.sendKeys(password);
     }
 }
